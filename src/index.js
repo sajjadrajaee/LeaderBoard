@@ -1,47 +1,27 @@
-const gameGenerator = async () => {
-  const response = await fetch('https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/', {
-    method: 'POST',
-    body: JSON.stringify({
-      name: 'Sajjad-game',
-    }),
-    headers: {
-      'Content-type': 'application/json; charset=UTF-8',
-    },
-  });
-  const gameIdObject = await response.json();
-  const gameId = gameIdObject.result.slice(14, 34);
-  return gameId;
-};
-const url = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/';
-const refresh = async (token, scoreList) => {
-  const response = await fetch(url + token, {
-    method: 'GET',
-    headers: {
-      'Content-type': 'application/json; charset=UTF-8',
-    },
-  });
-  const object = await response.json();
-  const score = await object.result;
-  for (let i = 0; i < score.length; i += 1) {
-    scoreList.innerHTML += `<tr><td> ${score[i].user} </td> <td> ${score[i].score} </td> </tr>`;
-  }
-};
+import './style.css';
+import { gameGenerator, refresh, submit } from './app.js';
 
-const submit = async (gametoken, username, userscore) => {
-  const response = await fetch(`${url + gametoken}/scores/`, {
-    method: 'POST',
-    body: JSON.stringify({
-      user: username,
-      score: userscore}),
-    headers: {
-      'Content-type': 'application/json; charset=UTF-8',
-    },
-  });
-  const object = await response.json();
-  const res = object.result;
-  return res;
-};
+const projectToken = gameGenerator();
+const token = 'f6sSVN11gCaVNDIQN9By/scores';
+console.log(projectToken);
+const refreshbutton = document.querySelector('#refresh');
+const table = document.querySelector('#table');
+const submitButton = document.querySelector('#submit');
+let nameInput = document.querySelector('#name');
+let scoreInput = document.querySelector('#score');
+const message = document.querySelector('#message');
 
-export {
-  gameGenerator, refresh, submit,
-};
+refreshbutton.addEventListener('click', (e) => {
+  e.preventDefault();
+  refresh(token, table);
+});
+
+submitButton.addEventListener('click', (e) => {
+  e.preventDefault();
+  const addScore = submit(token, nameInput.value, scoreInput.value);
+  nameInput = '';
+  scoreInput = '';
+  message.innerHTML = addScore;
+});
+
+refresh(token, table);
