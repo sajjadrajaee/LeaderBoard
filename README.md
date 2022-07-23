@@ -31,8 +31,8 @@ no neaded
 
 ### Setup
 
-[] clone the project from this [link](https://github.com/sajjadrajaee/TodoList).
-   example: git clone https://github.com/sajjadrajaee/TodoList
+[] clone the project from this [link](https://github.com/sajjadrajaee/leaderbord).
+   example: git clone https://github.com/sajjadrajaee/leaderbord
 [] use npm init -y to initialize the npm
 [] use npm install to install all neccerry dependencies
 [] use npm start to start the project and see live.
