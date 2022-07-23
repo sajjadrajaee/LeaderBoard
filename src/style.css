@@ -8,13 +8,13 @@ body {
   font-family: 'nuts', sans-serif;
   font-size: 18px;
 }
+
 nav {
   background-color: rgb(78, 78, 78);
-  color:beige;
+  color: beige;
   font-size: 20px;
   text-align: center;
   padding: 10px;
-
 }
 
 header {

@@ -8,7 +8,6 @@ const table = document.querySelector('#table');
 const submitButton = document.querySelector('#submit');
 let nameInput = document.querySelector('#name');
 let scoreInput = document.querySelector('#score');
-const message = document.querySelector('#message');
 
 refreshbutton.addEventListener('click', (e) => {
   e.preventDefault();
@@ -17,10 +16,9 @@ refreshbutton.addEventListener('click', (e) => {
 
 submitButton.addEventListener('click', (e) => {
   e.preventDefault();
-  const addScore = submit(token, nameInput.value, scoreInput.value);
+  submit(token, nameInput.value, scoreInput.value);
   nameInput = '';
   scoreInput = '';
-  message.innerHTML = addScore;
 });
 
 refresh(token, table);
