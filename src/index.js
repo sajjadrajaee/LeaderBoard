@@ -1,9 +1,8 @@
 import './style.css';
 import { gameGenerator, refresh, submit } from './app.js';
 
-const projectToken = gameGenerator();
+gameGenerator();
 const token = 'f6sSVN11gCaVNDIQN9By/scores';
-console.log(projectToken);
 const refreshbutton = document.querySelector('#refresh');
 const table = document.querySelector('#table');
 const submitButton = document.querySelector('#submit');
