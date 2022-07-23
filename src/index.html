@@ -16,8 +16,11 @@
     </header>
     <article>
         <div class="main-container">
+            
             <div class="score-seciont">
-                <table>
+                <button type="refresh" id="refresh">Refresh</button>
+                <hr>
+                <table id="table">
                     <tr>
                         <th>Name</th>
                         <th>Score</th>
@@ -31,14 +34,14 @@
             <div class="entry-section">
                 <form class="form">
                     <div class="name">
-                        <label class="label">Enter Name</label>
+                        <label class="label" id="name">Enter Name</label>
                         <input type="text" class="input">
                     </div>
                     <div class="score">
-                        <label class="label">Enter Score</label>
+                        <label class="label" id="score">Enter Score</label>
                         <input type="text" class="input">
                     </div>
-                    <button type="submit">Add Score</button>
+                    <button type="submit" id="submit">Add Score</button>
                 </form>
             </div>
         </div>
