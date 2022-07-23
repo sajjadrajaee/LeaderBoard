@@ -1,14 +1,26 @@
-import _ from 'lodash';
 import './style.css';
+import { gameGenerator, refresh, submit } from './app.js';
 
-function component() {
-  const element = document.createElement('div');
+gameGenerator();
+const token = 'f6sSVN11gCaVNDIQN9By/scores';
+const refreshbutton = document.querySelector('#refresh');
+const table = document.querySelector('#table');
+const submitButton = document.querySelector('#submit');
+let nameInput = document.querySelector('#name');
+let scoreInput = document.querySelector('#score');
+const message = document.querySelector('#message');
 
-  // Lodash, now imported by this script
-  element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-  element.classList.add('hello');
+refreshbutton.addEventListener('click', (e) => {
+  e.preventDefault();
+  refresh(token, table);
+});
 
-  return element;
-}
+submitButton.addEventListener('click', (e) => {
+  e.preventDefault();
+  const addScore = submit(token, nameInput.value, scoreInput.value);
+  nameInput = '';
+  scoreInput = '';
+  message.innerHTML = addScore;
+});
 
-document.body.appendChild(component());
+refresh(token, table);
